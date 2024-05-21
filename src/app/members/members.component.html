@@ -1,0 +1,213 @@
+<ng-container
+  *ngTemplateOutlet="members; context: { loading: loading$ | async, memberResponseReturned: memberResponseReturned$ | async, errorMessage: errorMessage$ | async, memberResponse: memberResponse$ | async }"
+></ng-container>
+<ng-template
+  #members
+  let-loading = "loading"
+  let-memberResponseReturned = "memberResponseReturned"
+  let-errorMessage="errorMessage"
+  let-memberResponse="memberResponse"
+  >
+<div class="container">
+  <div class="align-center text-center fill-height">
+    <img contain height="150" src="assets/Sun_God_Nika.png" />
+    <hr class="hr" />
+    <div class="text-body-2 font-weight-light mb-n1">Welcome to the</div>
+    <br />
+    <h1 class="text-h2 font-weight-bold">One Piece World Builder</h1>
+    <hr class="hr" />
+    <div *ngIf="loading" class="row align-center justify-center">
+      <div cols="auto">
+        <div class="spinner-border"></div>
+      </div>
+    </div>
+    <div class="row align-center justify-center">
+      <div class="col auto">
+        <div
+          *ngIf="memberResponseReturned"
+          class="alert alert-success"
+          role="alert"
+        >
+          <i class="fas fa-times-circle me-3"></i>We have received your request.
+        </div>
+        <div
+          *ngIf="errorMessage$.value.length > 0"
+          class="alert alert-danger"
+          role="alert"
+        >
+          <i class="fas fa-times-circle me-3"></i>{{ errorMessage$.value }}
+        </div>
+
+        <div class="register-form">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" lazy-validation>
+              <div class="form-group">
+                <label>Name</label>
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['name'].errors }"
+                />
+                @if (submitted && f['name'].errors) {
+                <div class="invalid-feedback">
+                  @if (f['name'].errors['required']) {
+                  <div>Name is required</div>
+                  }
+                </div>
+                }
+              </div>
+          
+              <div class="form-group">
+                <label>Rank</label>
+                <input
+                  type="text"
+                  formControlName="rank"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['rank'].errors }"
+                />
+                @if (submitted && f['rank'].errors) {
+                <div class="invalid-feedback">
+                  @if (f['rank'].errors['required']) {
+                  <div>Rank is required</div>
+                  }
+                </div>
+                }
+              </div>
+                    
+              <div class="form-group">
+                <label>Designation</label>
+                <input
+                  type="text"
+                  formControlName="designation"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['designation'].errors }"
+                />
+                @if (submitted && f['designation'].errors) {
+                <div class="invalid-feedback">
+                  @if (f['designation'].errors['required']) {
+                  <div>Designation is required</div>
+                  }
+                </div>
+                }
+              </div>
+                    
+              <div class="form-group">
+                <label>Organization</label>
+                <input
+                  type="text"
+                  formControlName="organization"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['organization'].errors }"
+                />
+                @if (submitted && f['organization'].errors) {
+                <div class="invalid-feedback">
+                  @if (f['organization'].errors['required']) {
+                  <div>Organization is required</div>
+                  }
+                </div>
+                }
+              </div>
+                    
+              <div class="form-group">
+                <label>Place of Birth</label>
+                <input
+                  type="text"
+                  formControlName="placeOfBirth"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['placeOfBirth'].errors }"
+                />
+                @if (submitted && f['placeOfBirth'].errors) {
+                <div class="invalid-feedback">
+                  @if (f['placeOfBirth'].errors['required']) {
+                  <div>Place of Birth is required</div>
+                  }
+                </div>
+                }
+              </div>
+                    
+              <div class="form-group">
+                <label>Current Location</label>
+                <input
+                  type="text"
+                  formControlName="currentLocation"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['currentLocation'].errors }"
+                />
+                @if (submitted && f['currentLocation'].errors) {
+                <div class="invalid-feedback">
+                  @if (f['currentLocation'].errors['required']) {
+                  <div>Current Location is required</div>
+                  }
+                </div>
+                }
+              </div>
+                    
+              <div class="form-group">
+                <label>Skills</label>
+                <input
+                  type="text"
+                  formControlName="skills"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['skills'].errors }"
+                />
+                @if (submitted && f['skills'].errors) {
+                <div class="invalid-feedback">
+                  @if (f['skills'].errors['required']) {
+                  <div>Skills are required</div>
+                  }
+                </div>
+                }
+              </div>
+                    
+              <div class="form-group">
+                <label>Weapons</label>
+                <input
+                  type="text"
+                  formControlName="weapons"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['weapons'].errors }"
+                />
+                @if (submitted && f['weapons'].errors) {
+                <div class="invalid-feedback">
+                  @if (f['weapons'].errors['required']) {
+                  <div>Weapons are required</div>
+                  }
+                </div>
+                }
+              </div>
+                    
+              <div class="form-group">
+                <label>Bounty</label>
+                <input
+                  type="text"
+                  formControlName="bounty"
+                  class="form-control"
+                  [ngClass]="{ 'is-invalid': submitted && f['bounty'].errors }"
+                />
+                @if (submitted && f['bounty'].errors) {
+                <div class="invalid-feedback">
+                  @if (f['bounty'].errors['required']) {
+                  <div>Bounty is required</div>
+                  }
+                </div>
+                }
+              </div>
+          
+              
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button
+                  type="button"
+                  (click)="onReset()"
+                  class="btn btn-warning float-right"
+                >
+                  Reset
+                </button>
+              </div>
+            </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+</ng-template>
